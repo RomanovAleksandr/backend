@@ -1,4 +1,4 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+п»їusing Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace RemoveExtraBlanks.Tests
 {
@@ -17,8 +17,8 @@ namespace RemoveExtraBlanks.Tests
         [TestMethod]
         public void Remove_duplicate_spaces_and_tabs()
         {
-            string str = "\t строка    с  \t\t  пробелами и табуляцией ";
-            string expectedStr = "строка с пробелами и табуляцией";
+            string str = "\t СЃС‚СЂРѕРєР°    СЃ  \t\t  РїСЂРѕР±РµР»Р°РјРё Рё С‚Р°Р±СѓР»СЏС†РёРµР№ ";
+            string expectedStr = "СЃС‚СЂРѕРєР° СЃ РїСЂРѕР±РµР»Р°РјРё Рё С‚Р°Р±СѓР»СЏС†РёРµР№";
             string res = Program.RemoveExtraBlanks(str);
             Assert.AreEqual(expectedStr, res);
         }
