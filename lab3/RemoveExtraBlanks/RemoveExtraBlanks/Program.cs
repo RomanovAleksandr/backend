@@ -55,18 +55,20 @@ namespace RemoveExtraBlanks
             return true;
         }
 
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
             if (args.Length != 2)
             {
                 Console.WriteLine("Incorrect number of arguments!");
                 Console.WriteLine("Usage RemoveExtraBlanks.exe <inputFile> <outputFile>");
-                return;
+                return 1;
             }
 
             string inputFileName = args[0];
             string outputFileName = args[1];
             RemoveExtraBlanksInFile(inputFileName, outputFileName);
+
+            return 0;
         }
     }
 }
