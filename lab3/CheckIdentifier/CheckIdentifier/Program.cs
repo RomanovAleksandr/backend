@@ -9,7 +9,7 @@ namespace CheckIdentifier
             return ('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z');
         }
 
-        public static bool Check(string identifier)
+        public static bool CheckIdent(string identifier)
         {
             if (identifier.Length == 0)
             {
@@ -45,7 +45,7 @@ namespace CheckIdentifier
                 return 1;
             }
             string identifier = args[0];
-            Check(identifier);
+            CheckIdent(identifier);
             return 0;
         }
     }

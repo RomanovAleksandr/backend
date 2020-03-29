@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29911.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoveExtraBlanks", "RemoveExtraBlanks\RemoveExtraBlanks.csproj", "{D456F3D3-1019-4DBE-94A8-89B46E7DA6C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D456F3D3-1019-4DBE-94A8-89B46E7DA6C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D456F3D3-1019-4DBE-94A8-89B46E7DA6C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D456F3D3-1019-4DBE-94A8-89B46E7DA6C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D456F3D3-1019-4DBE-94A8-89B46E7DA6C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7C7028D-F2A0-423B-918B-4333FBD4D057}
+	EndGlobalSection
+EndGlobal
