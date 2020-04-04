@@ -45,9 +45,7 @@ namespace RemoveExtraBlanks
             while ((line = inputFile.ReadLine()) != null)
             {
                 string newLine = RemoveExtraBlanks(line);
-                Console.WriteLine(newLine);
-                outputFile.WriteLine(newLine);
-                
+                outputFile.WriteLine(newLine);  
             }
 
             inputFile.Close();
