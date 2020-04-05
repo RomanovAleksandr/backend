@@ -8,7 +8,11 @@ namespace Translator.Models
 {
     public class Dictionary
     {
-        StreamReader dictionary = new StreamReader("Models/Dictionary.txt");
+        StreamReader dictionary;
+        public Dictionary(string path)
+        {
+            dictionary = new StreamReader(path);
+        }
 
         public string findTranslation(string word)
         {

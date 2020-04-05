@@ -25,7 +25,7 @@ namespace Translator
             {
                 var word = context.Request.Query["word"];
 
-                Dictionary dictionary = new Dictionary();
+                Dictionary dictionary = new Dictionary("Models/Dictionary.txt");
                 string translatedWord = dictionary.findTranslation(word);
 
                 if (translatedWord != null)
