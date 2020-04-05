@@ -1,4 +1,4 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+п»їusing Microsoft.VisualStudio.TestTools.UnitTesting;
 using Translator.Models;
 
 namespace Translator.Tests
@@ -13,13 +13,13 @@ namespace Translator.Tests
         public void FindEngToRus()
         {
             string translated = dictionary.findTranslation("hello");
-            Assert.AreEqual("привет", translated);
+            Assert.AreEqual("РїСЂРёРІРµС‚", translated);
         }
 
         [TestMethod]
         public void FindRusToEng()
         {
-            string translated = dictionary.findTranslation("привет");
+            string translated = dictionary.findTranslation("РїСЂРёРІРµС‚");
             Assert.AreEqual("hello", translated);
         }
 
