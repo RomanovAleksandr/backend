@@ -10,7 +10,12 @@ namespace MyNotes.Data.Repositories
 {
     public class NotesRepository : INotesRepositories
     {
-        string notesPath = "Data/Notes.txt";
+        static string notesPath;
+        public static void setNotesPath(string path)
+        {
+            notesPath = path;
+        }
+
         public IEnumerable<Note> GetAll()
         {
             StreamReader notesReader = new StreamReader(notesPath);

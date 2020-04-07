@@ -7,6 +7,7 @@ using MyNotes.Data.Interfaces;
 using System.IO;
 using MyNotes.Data.Models;
 using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
+using MyNotes.Data.Repositories;
 
 namespace MyNotes.Data.Controllers
 {
@@ -17,6 +18,7 @@ namespace MyNotes.Data.Controllers
         public NotesController(INotesRepositories notesRepositories)
         {
             _notesRepositories = notesRepositories;
+            NotesRepository.setNotesPath("Data/Notes.txt");
         }
 
         [HttpGet]
@@ -32,7 +34,7 @@ namespace MyNotes.Data.Controllers
         [Route("note/add")]
         public IActionResult Add()
         {
-            using (var reader = new StreamReader(Request.Body))
+            using (StreamReader reader = new StreamReader(Request.Body))
             {
                 var body = reader.ReadToEnd();
                 _notesRepositories.Add(new Note { message = body });
