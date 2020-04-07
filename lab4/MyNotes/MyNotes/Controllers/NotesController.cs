@@ -8,16 +8,17 @@ using System.IO;
 using MyNotes.Data.Models;
 using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using MyNotes.Data.Repositories;
+using System.Text;
 
 namespace MyNotes.Data.Controllers
 {
     public class NotesController : Controller
     {
-        private readonly INotesRepositories _notesRepositories;
+        private readonly INotesRepositories _notesRepository;
 
         public NotesController(INotesRepositories notesRepositories)
         {
-            _notesRepositories = notesRepositories;
+            _notesRepository = notesRepositories;
             NotesRepository.setNotesPath("Data/Notes.txt");
         }
 
@@ -25,20 +26,17 @@ namespace MyNotes.Data.Controllers
         [Route("notes/list")]
         public ViewResult List()
         {
-            var note = _notesRepositories.GetAll();
+            var note = _notesRepository.GetAll();
             return View(note);
         }
 
-
         [HttpPost]
         [Route("note/add")]
-        public IActionResult Add()
+        public async Task<OkResult> AddAsync()
         {
-            using (StreamReader reader = new StreamReader(Request.Body))
-            {
-                var body = reader.ReadToEnd();
-                _notesRepositories.Add(new Note { message = body });
-            }
+            string body = await new StreamReader(Request.Body, Encoding.UTF8).ReadToEndAsync();
+            Note note = new Note() { message = body };
+            _notesRepository.Add(note);
             return Ok();
         }
     }
