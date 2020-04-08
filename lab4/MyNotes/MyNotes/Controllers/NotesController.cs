@@ -16,10 +16,10 @@ namespace MyNotes.Data.Controllers
     {
         private readonly INotesRepositories _notesRepository;
 
-        public NotesController(INotesRepositories notesRepositories)
+        public NotesController(INotesRepositories notesRepository)
         {
-            _notesRepository = notesRepositories;
-            NotesRepository.setNotesPath("Data/Notes.txt");
+            _notesRepository = notesRepository;
+            NotesRepository.SetStoragePath("Data/Notes.txt");
         }
 
         [HttpGet]

@@ -10,15 +10,15 @@ namespace MyNotes.Data.Repositories
 {
     public class NotesRepository : INotesRepositories
     {
-        static string notesPath;
-        public static void setNotesPath(string path)
+        static string storagePath;
+        public static void SetStoragePath(string path)
         {
-            notesPath = path;
+            storagePath = path;
         }
 
         public IEnumerable<Note> GetAll()
         {
-            StreamReader notesReader = new StreamReader(notesPath);
+            StreamReader notesReader = new StreamReader(storagePath);
             List<Note> notesList = new List<Note>();
 
             string line;
@@ -34,7 +34,7 @@ namespace MyNotes.Data.Repositories
 
         public void Add(Note note)
         {
-            StreamWriter notesWriter = new StreamWriter(notesPath, true);
+            StreamWriter notesWriter = new StreamWriter(storagePath, true);
             notesWriter.WriteLine(note.message);
             notesWriter.Close();
         }
