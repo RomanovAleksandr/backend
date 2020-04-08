@@ -19,7 +19,7 @@ namespace MyNotes.Data.Controllers
         public NotesController(INotesRepositories notesRepository)
         {
             _notesRepository = notesRepository;
-            NotesRepository.SetStoragePath("Data/Notes.txt");
+            NotesRepository.SetStoragePath("Storage/Notes.txt");
         }
 
         [HttpGet]
