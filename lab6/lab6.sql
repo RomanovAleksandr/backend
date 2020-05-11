@@ -104,3 +104,96 @@ WHERE student.student_id = 1
 
 --5. (5#) Может ли значение в столбце(ах), на который наложено ограничение foreign key, 
 --равняться null? Привидите пример. 
+
+--Если не наложено ограничение NOT NULL может.
+
+CREATE TABLE "author" (
+	"author_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	"name"	TEXT NOT NULL
+);
+
+CREATE TABLE "book" (
+	"book_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	"title"	TEXT NOT NULL,
+	"author_id"	INTEGER,
+	FOREIGN KEY("author_id") REFERENCES "author"("author_id")
+);
+
+INSERT INTO author(name) VALUES('Иван');
+
+INSERT INTO book(title) VALUES('Книга');
+INSERT INTO book(title, author_id) VALUES('Книга 2', NULL);
+INSERT INTO book(title, author_id) VALUES('Книга 3', 1);
+
+
+--6. (#15) Как удалить повторяющиеся строки с использованием ключевого слова Distinct?
+--Приведите пример таблиц с данными и запросы. 
+
+CREATE TABLE "person" (
+	"person_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	"name"	TEXT NOT NULL,
+	"birthday" TEXT NOT NULL
+);
+
+INSERT INTO person(name, birthday) 
+VALUES	('Иван', '2020-01-01'),
+	('Иван', '2020-01-01'),
+	('Артем', '2020-01-01');
+
+SELECT DISTINCT name, birthday FROM person;
+
+
+--7. (#10) Есть две таблицы:
+--     users - таблица с пользователями (users_id, name)
+--    orders - таблица с заказами (orders_id, users_id, status)
+
+CREATE TABLE "users" (
+	"users_id"	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	"name"	TEXT NOT NULL
+);
+
+INSERT INTO users(name)
+VALUES	('Александр'),
+	('Иван'),
+	('Михаил'),
+	('Мария'),
+	('Татьяна'),
+	('Анастасия');
+
+INSERT INTO orders(users_id, status)
+VALUES (1, 0),
+       (1, 1),
+       (1, 1),
+       (1, 1),
+       (1, 1),
+       (1, 1),
+       (1, 1),
+       (2, 0);
+
+--1) Выбрать всех пользователей из таблицы users, 
+--у которых ВСЕ записи в таблице orders имеют status = 0
+
+SELECT users.*
+FROM orders
+LEFT JOIN users on users.users_id = orders.users_id
+WHERE users.users_id NOT IN (
+	SELECT users_id
+	FROM orders
+	WHERE status <> 0);
+
+--2) Выбрать всех пользователей из таблицы users, 
+у которых больше 5 записей в таблице orders имеют status = 1
+
+SELECT users.*
+FROM orders
+LEFT JOIN users ON users.users_id = orders.users_id
+WHERE status = 1
+GROUP BY orders.users_id
+HAVING COUNT(status) > 5;
+
+
+--8. (#10)  В чем различие между выражениями HAVING и WHERE?
+
+--WHERE - это ограничивающее выражение. Оно выполняется до того, как будет получен результат операции.
+--HAVING - фильтрующее выражение. Оно применяется к результату операции 
+--и выполняется уже после того как этот результат будет получен, в отличии от where.
