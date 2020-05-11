@@ -3,9 +3,11 @@
 SELECT id, cpu, memory 
 FROM PC 
 WHERE memory = 3000;
+
 --2) Минимальный объём жесткого диска, установленного в компьютере на складе. Вывод: hdd
 SELECT MIN(hdd) AS hdd 
 FROM PC;
+
 --3) Количество компьютеров с минимальным объемом жесткого диска, доступного на складе. 
 --Вывод: count, hdd
 SELECT COUNT(*) AS count, hdd 
